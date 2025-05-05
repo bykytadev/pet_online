@@ -17,6 +17,7 @@ public class AuthController {
 
         UserLoginResponse response = new UserLoginResponse();
         response.setEmail(request.getEmail());
+
         return response;
 
     }
