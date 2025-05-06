@@ -11,4 +11,7 @@ public class UrlConstant {
 
     // Cart
     public static final String API_V1_CART = "/api/v1/cart";
+
+    // User
+    public static final String API_V1_USER = "/api/v1/user";
 }

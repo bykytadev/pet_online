@@ -3,34 +3,26 @@ package com.project.pet.controllers;
 import com.project.pet.constants.UrlConstant;
 import com.project.pet.dto.request.UserLoginRequest;
 import com.project.pet.dto.request.UserRegisterRequest;
-import com.project.pet.dto.response.UserLoginResponse;
-import com.project.pet.dto.response.UserRegisterResponse;
+import com.project.pet.dto.response.UserResponse;
+import com.project.pet.services.UserService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequiredArgsConstructor
 public class AuthController {
 
+    private final UserService userService;
+
     @PostMapping(UrlConstant.API_V1_AUTH_LOGIN)
-    public Object login(@RequestBody UserLoginRequest request) {
-
-        UserLoginResponse response = new UserLoginResponse();
-        response.setEmail(request.getEmail());
-
-        return response;
-
+    public UserResponse login(@RequestBody UserLoginRequest request) {
+        return userService.loginUser(request);
     }
 
     @PostMapping(UrlConstant.API_V1_AUTH_REGISTER)
-    public Object register(@RequestBody UserRegisterRequest request) {
-
-        UserRegisterResponse response = new UserRegisterResponse();
-        response.setEmail(request.getEmail());
-        response.setFullname(request.getFullname());
-        response.setStatus(request.getStatus());
-        response.setRole(request.getRole());
-
-        return response;
+    public UserResponse register(@RequestBody UserRegisterRequest request) {
+        return userService.registerUser(request);
     }
 }

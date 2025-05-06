@@ -9,11 +9,12 @@ import lombok.Setter;
 @Getter
 @Setter
 @Builder
-public class ProductResponse {
+public class ProductCreateResponse {
     private Integer id;
     private String name;
     private String description;
     private BigDecimal price;
     private Integer stock;
+    private BigDecimal original_price;
     private String category;
 }
